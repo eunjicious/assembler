@@ -1,0 +1,8 @@
+mov 0x8049f10,%eax
+mov %esp,%ecx
+mov -0x4(%ebx),%eax
+mov $0x0,%ebx
+mov $0x0,%edx
+mov $0x1,%ecx
+mov $0x804a01f,%eax
+mov -0x4(%ebx),%eax
