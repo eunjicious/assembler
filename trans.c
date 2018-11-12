@@ -13,32 +13,26 @@ int instr_trans(char *op, char *args, char* mcode)
 	sr=strtok(str,",");
 	str=strtok(NULL,",");
 	dest=strtok(str,",");
-	if(strstr(sr,"%e")){
-		if(strstr(dest,"%e")){
-			//reg to reg
+	if(sr[0]=='%'){
+		if(dest[0]=='%'){
 			strcpy(mcode,"89");
 		}
-		else if(strstr(dest,"0x"))
+		else if(dest[0]=='0')
 		{
-			//reg(eax) to mem
 			strcpy(mcode,"a3");
 		}
 	}
-	else if(strstr(sr,"(%")&&!strstr(sr,"0x")){
-		//mem to reg
+	else if(sr[0]=='('){
 		strcpy(mcode,"8b");
 	}
-	else if(strstr(sr,"(%")&&strstr(sr,"0x")){
-		//mem to reg(addressing w/ disp.)
+	else if(sr[strlen(sr)-1]==')'){
 		strcpy(mcode,"8b");
 	}
-	else if(strstr(sr,"0x")){
-		//mem to reg
+	else if(sr[0]=='0'){
 		if(strstr(dest,"%e"))
 			strcpy(mcode,"a1");
 	}
-	else if(strstr(sr,"$0x")){
-		//immediate to reg
+	else if(sr[0]=='$'){
 		if(strcmp(dest,"%eax"))
 			strcpy(mcode,"b8");
 		else if(strcmp(dest,"%ecx"))
@@ -53,9 +47,11 @@ int instr_trans(char *op, char *args, char* mcode)
 			strcpy(mcode,"bd");
 		else if(strcmp(dest,"%esl"))
 			strcpy(mcode,"be");
-		else if(strcmp(dest,"edl"))
+		else if(strcmp(dest,"%edl"))
 			strcpy(mcode,"bf");
 	}
+	else
+		return 0;
 
 	
 	return 1;	
