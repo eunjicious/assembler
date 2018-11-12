@@ -13,7 +13,7 @@ int instr_trans(char *op, char *args, char* mcode)
 	sr=strtok(str,",");
 	str=strtok(NULL,",");
 	dest=strtok(str,",");
-	if(strstr(sr,"%e"){
+	if(strstr(sr,"%e")){
 		if(strstr(dest,"%e")){
 			//reg to reg
 			strcpy(mcode,"89");
@@ -34,12 +34,12 @@ int instr_trans(char *op, char *args, char* mcode)
 	}
 	else if(strstr(sr,"0x")){
 		//mem to reg
-		if(strstr(dest,"%e")
+		if(strstr(dest,"%e"))
 			strcpy(mcode,"a1");
 	}
-	else if(strstr(sr,"$0x"){
+	else if(strstr(sr,"$0x")){
 		//immediate to reg
-		if(strcmp(dest,"%eax")
+		if(strcmp(dest,"%eax"))
 			strcpy(mcode,"b8");
 		else if(strcmp(dest,"%ecx"))
 			strcpy(mcode,"b9");
