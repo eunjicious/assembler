@@ -7,8 +7,8 @@ int instr_trans(char *op, char *args, char* mcode)
 		printf("Error: %s %s is not valid\n", op, args);
 		return 0;
 	}
-	char* sr;
-	char* dest;
+	char* sr=(char*)malloc(sizeof(char)*128);
+	char* dest=(char*)malloc(sizeof(char)*128);
 	char* str=args;
 	sr=strtok(str,",");
 	str=strtok(NULL,",");

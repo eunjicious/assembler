@@ -5,8 +5,8 @@ int is_valid(char *op, char *args)
 	//printf("if valid, return 1\n");
 	//printf("otherwise, return 0\n");
 
-	char* sr_check;
-	char* dest_check;
+	char* sr_check=(char*)malloc(sizeof(char)*128);
+	char* dest_check=(char*)malloc(sizeof(char)*128);
 	char* str_check=args;	
 	sr_check=strtok(str_check,",");
 	str_check=strtok(NULL,",");
