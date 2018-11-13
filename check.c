@@ -21,7 +21,7 @@ int is_valid(char *op, char *args)
 		dest_ch[j-i]=args[j];
 	if(dest_ch[0]=='$')
 		return 0;
-	if(sr_ch[0]=='('||sr_ch[0]=='0')
+	if(sr_ch[0]=='('||sr_ch[0]=='0'||sr_ch[0]=='-')
 		if(dest_ch[0]=='('||dest_ch[0]=='0')
 			return 0;
 
