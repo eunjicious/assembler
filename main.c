@@ -1,5 +1,4 @@
 #include "myas.h"
-
 int main(int argc, char* argv[])
 {
 	char ifname[20];
@@ -29,6 +28,7 @@ int main(int argc, char* argv[])
 			printf("Error: %s %s cannot be translated\n", op, args);
 			continue;
 		}
+		
 		fprintf(ofp, "%s\n", mcode);
 	}
 
