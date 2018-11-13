@@ -12,7 +12,6 @@ int instr_trans(char *op, char *args, char* mcode)
 	sr=strtok(str,",");
 	str=strtok(NULL,",");
 	dest=str;
-	printf("%s %s\n",sr,dest);
 	if(sr[0]=='%'&&sr[1]=='e'){
 		if(dest[0]=='%'&&dest[1]=='e')
 			strcpy(mcode,"89");
@@ -25,28 +24,29 @@ int instr_trans(char *op, char *args, char* mcode)
 	}
 	else if(sr[0]=='0'&&sr[1]=='x')
 	{
-		if(strcmp(dest,"%eax"))
+		if(dest[2]=='a'&&dest[3]=='x')
 		{
 			strcpy(mcode,"a1");
 		}
 	}
 	else if(sr[0]=='$'){
-		if(strcmp(dest,"%eax"))
+		if(dest[2]=='a'&&dest[3]=='x')
 			strcpy(mcode,"b8");
-		else if(strcmp(dest,"%ecx"))
+		else if(dest[2]=='c'&&dest[3]=='x')
 			strcpy(mcode,"b9");
-		else if(strcmp(dest,"%edx"))
+		else if(dest[2]=='d'&&dest[3]=='x')
 			strcpy(mcode,"ba");
-		else if(strcmp(dest,"%ebx"))
+		else if(dest[2]=='b'&&dest[3]=='x')
 			strcpy(mcode,"bb");
-		else if(strcmp(dest,"%esp"))
+		else if(dest[2]=='s'&&dest[3]=='p')
 			strcpy(mcode,"bc");
-		else if(strcmp(dest,"%ebp"))
+		else if(dest[2]=='b'&&dest[3]=='p')
 			strcpy(mcode,"bd");
-		else if(strcmp(dest,"%esl"))
+		else if(dest[2]=='s'&&dest[3]=='i')
 			strcpy(mcode,"be");	
-		else if(strcmp(dest,"%edl"))
+		else if(dest[2]=='d'&&dest[3]=='i')
 			strcpy(mcode,"bf");
 	}
+	else strcpy(mcode,"error");
 	return 1;	
 }
